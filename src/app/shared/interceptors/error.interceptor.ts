@@ -30,11 +30,12 @@ export class ErrorInterceptor implements HttpInterceptor {
           err.error.message || err.statusText,
           err.error.title,
         ); /// authentication related error
-      } else {
-        this.messageService.error(
-          'Something went wrong, try again later.',
-          'Notice');
       }
+      // else {
+      //         this.messageService.error(
+      //           'Something went wrong, try again later.',
+      //           'Notice');
+      //       }
       return throwError(err.error.message || err.statusText);
     }));
   }
