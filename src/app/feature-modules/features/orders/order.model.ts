@@ -11,5 +11,6 @@ export interface OrderModel {
   deliveryLocation: LocationModel;
   orderTime: string;
   driver: number;
+  _id: number;
 }
 
