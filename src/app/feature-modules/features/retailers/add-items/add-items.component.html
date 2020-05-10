@@ -42,6 +42,14 @@
         <div *ngIf="f.price.errors.required">Item Price is required</div>
       </div>
     </div>
+    <div class="form-group">
+      <label class="font-weight-bold">Item Tag</label>
+      <input type="text" formControlName="tags"
+             class="form-control text-darker font-weight-bold border-primary">
+      <div *ngIf="submitted && f.tags.errors" class="text-danger">
+        <div *ngIf="f.tags.errors.required">Item Tag is required</div>
+      </div>
+    </div>
 
 
     <hr class="my-4"/>
