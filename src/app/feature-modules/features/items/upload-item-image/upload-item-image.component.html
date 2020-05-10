@@ -1,0 +1,28 @@
+<div class="card-body m-3">
+  <form [formGroup]="uploadImageForm" (ngSubmit)="upload()">
+    <div class="form-group">
+      <div *ngIf="currentFileUpload" class="progress">
+        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+             attr.aria-valuenow="{{progress.percentage}}" [ngStyle]="{width:progress.percentage+'%'}">
+          {{progress.percentage}}%
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="font-weight-bold">Item Image</label>
+        <input type="file" formControlName="file" class="form-control text-darker font-weight-bold border-primary" type="file" (change)="selectFile($event)"
+               id="inputGroupFile01">
+        <div *ngIf="submitted && f.file.errors" class="text-danger">
+          <div *ngIf="f.file.errors.required">Item Image is required</div>
+        </div>
+      </div>
+
+      <hr class="my-4"/>
+      <button class="btn  btn-outline-primary" [disabled]="!selectedFiles" type="submit">Upload</button>
+      <button type="button" (click)="bsModalRef.hide()" class="btn ml-2 mr-2 btn-outline-warning">
+        Close
+      </button>
+
+    </div>
+
+  </form>
+</div>
