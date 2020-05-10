@@ -22,7 +22,7 @@ export class OrdersService {
   listOrdersByRetailers(retailerId: number): Observable<HttpResponse<OrderModel[]>> {
     console.log(retailerId);
     const headers = new HttpHeaders();
-    const url = environment.apiUrl + '/orders/' + retailerId.toString();
+    const url = environment.apiUrl + '/orders/retailer/' + retailerId.toString();
     headers.set('Content-Type', 'text/plain');
     return this.http.get<OrderModel[]>(url, {headers, observe: 'response'});
 

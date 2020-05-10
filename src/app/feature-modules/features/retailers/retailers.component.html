@@ -5,6 +5,7 @@
         <h4 class="card-title"> Registered Retailers</h4>
       </div>
       <div class="card-body">
+        <button class="btn btn-outline-primary" (click)="add()">Add Retailer</button>
         <div *ngIf="retailers">
           <div *ngIf="retailers.length == 0" class="alert alert-info">Empty Retailers List</div>
           <div *ngIf="retailers.length > 0">

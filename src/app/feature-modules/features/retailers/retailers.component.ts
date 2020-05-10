@@ -7,6 +7,7 @@ import {RetailerModel} from './retailer.model';
 import {RetailerService} from './retailer.service';
 import {RetailerDetailsComponent} from './retailer-details/retailer-details.component';
 import {Router} from '@angular/router';
+import {AddRetailerComponent} from './add-retailer/add-retailer.component';
 
 @Component({
   selector: 'app-retailers',
@@ -54,5 +55,12 @@ export class RetailersComponent implements OnInit {
 
   retailerOrders(_id: number) {
     this.router.navigate(['/home/retailer-orders/' + _id]);
+  }
+
+  add() {
+    this.modalService.show(AddRetailerComponent);
+    this.modalService.onHide.subscribe(val => {
+      this.listRetailers();
+    })
   }
 }

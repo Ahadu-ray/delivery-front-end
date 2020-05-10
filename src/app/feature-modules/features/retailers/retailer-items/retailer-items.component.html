@@ -9,32 +9,34 @@
         <button class="btn btn-outline-primary" (click)="addItem()">Add Item</button>
         <div *ngIf="items">
           <div class="alert alert-info" *ngIf="items.length === 0">Empty Items lists</div>
-          <table class="table" *ngIf="items.length > 0">
-            <thead class=" text-primary">
-            <th>
-              #
-            </th>
-            <th>
-              Item
-            </th>
-            <th>
-              Description
+          <table class="table table-borderless" *ngIf="items.length > 0">
+            <!--<thead class=" text-primary">-->
+            <!--<th>-->
+            <!--Item-->
+            <!--</th>-->
+            <!--<th>-->
+            <!--Description-->
 
-            </th>
-            <th class="text-right">
-              Actions
-            </th>
-            </thead>
+            <!--</th>-->
+            <!--&lt;!&ndash;<th class="text-right">&ndash;&gt;-->
+            <!--&lt;!&ndash;Actions&ndash;&gt;-->
+            <!--&lt;!&ndash;</th>&ndash;&gt;-->
+            <!--</thead>-->
             <tbody>
-            <tr *ngFor="let each of items">
-              <td><span *ngIf="each.imgUrl"><img src="{{each.imgUrl}}" alt="item image" width="50" height="50"></span>
-                <span *ngIf="!each.imgUrl"><button class="btn btn-outline-success" (click)="uploadImage(each._id)">Upload image</button></span></td>
-              <td><ul class="list-group">
-                <li><span *ngIf="each.name">{{each.name}}</span></li>
-                <li><span *ngIf="each.description">{{each.description}}</span></li>
-                <li><span *ngIf="each.price">{{each.price}}</span></li>
-                <li><span *ngIf="each.rating">{{each.rating}} <i class="nc nc-favourite-28"></i></span></li>
-              </ul></td>
+            <tr *ngFor="let each of items" class="border-bottom">
+              <td><span *ngIf="!each.imgUrl.endsWith('noImg.png')">
+                <img src="{{each.imgUrl}}" alt="item image" width="50" height="50"></span>
+                <span *ngIf="each.imgUrl.endsWith('noImg.png')"><button class="btn btn-outline-success"
+                                                                        (click)="uploadImage(each._id)">Upload image</button></span>
+              </td>
+              <td>
+                <ul class="list-group">
+                  <li><span *ngIf="each.name">Item: {{each.name}}</span></li>
+                  <li><span *ngIf="each.description">Description: {{each.description}}</span></li>
+                  <li><span *ngIf="each.price">Price: {{each.price}}</span></li>
+                  <li><span *ngIf="each.rating">Rating: {{each.rating}} <i class="nc nc-favourite-28"></i></span></li>
+                </ul>
+              </td>
             </tr>
             </tbody>
           </table>

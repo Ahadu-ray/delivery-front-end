@@ -6,6 +6,7 @@ import {NotificationService} from '../../../../shared/services/notification.serv
 import {BsModalService} from 'ngx-bootstrap/modal';
 import {AddItemsComponent} from '../add-items/add-items.component';
 import {UploadItemImageComponent} from '../../items/upload-item-image/upload-item-image.component';
+import {environment} from '../../../../shared/api/config';
 
 @Component({
   selector: 'app-retailer-items',
@@ -36,7 +37,7 @@ export class RetailerItemsComponent implements OnInit {
         // change response when resp body is fixed
         if (result.status === 200) {
           // console.log(result);
-          this.items = result.body.filter(item => item.imgUrl = window.location.origin + '/' + item.imgUrl);
+          this.items = result.body.filter(item => item.imgUrl = `${environment.fileUrl}` + item.imgUrl);
         } else {
           this.notificationService.error(`Couldn't list retailer Items items`, result.statusText);
         }

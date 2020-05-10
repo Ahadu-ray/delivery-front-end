@@ -1,0 +1,130 @@
+<div class="card-body m-3">
+  <form [formGroup]="addRetailerForm" (ngSubmit)="addRetailer()">
+
+    <div class="form-group">
+      <label class="font-weight-bold">Retailer name</label>
+      <input type="text" formControlName="name"
+             class="form-control text-darker font-weight-bold border-primary">
+      <div *ngIf="submitted && f.name.errors" class="text-danger">
+        <div *ngIf="f.name.errors.required">Retailer Name
+          is required
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label class="font-weight-bold">Retailer Type</label>
+      <input type="text" formControlName="type"
+             class="form-control text-darker font-weight-bold border-primary">
+      <div *ngIf="submitted && f.type.errors" class="text-danger">
+        <div *ngIf="f.type.errors.required">Retailer Type
+          is required
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label class="font-weight-bold">Retailer Description</label>
+      <input type="text" formControlName="description" class="form-control text-darker font-weight-bold border-primary">
+      <div *ngIf="submitted && f.description.errors" class="text-danger">
+        <div *ngIf="f.description.errors.required">Retailer Description is required</div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label class="font-weight-bold">Retailer Phone</label>
+      <input type="text" formControlName="phoneNumber"
+             class="form-control text-darker font-weight-bold border-primary">
+      <div *ngIf="submitted && f.phoneNumber.errors" class="text-danger">
+        <div *ngIf="f.phoneNumber.errors.required">Retailer Phone is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="font-weight-bold">Retailer Tag</label>
+      <input type="text" formControlName="tags"
+             class="form-control text-darker font-weight-bold border-primary">
+      <div *ngIf="submitted && f.tags.errors" class="text-danger">
+        <div *ngIf="f.tags.errors.required">Retailer Tag is required</div>
+      </div>
+    </div>
+    <hr>
+    <label for="">Location</label>
+    <div class="form-group">
+      <label class="font-weight-bold">Location Name</label>
+      <input type="text" formControlName="locationType"
+             class="form-control text-darker font-weight-bold border-primary">
+      <div *ngIf="submitted && f.locationType.errors" class="text-danger">
+        <div *ngIf="f.locationType.errors.required">Location Name is required</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-6">
+        <label class="font-weight-bold">Latitude</label>
+        <input type="number" formControlName="latitude"
+               class="form-control text-darker font-weight-bold border-primary">
+        <div *ngIf="submitted && f.latitude.errors" class="text-danger">
+          <div *ngIf="f.latitude.errors.required">Location is required</div>
+        </div>
+      </div>
+      <div class="form-group col-6">
+        <label class="font-weight-bold">Longitude</label>
+        <input type="number" formControlName="longitude"
+               class="form-control text-darker font-weight-bold border-primary">
+        <div *ngIf="submitted && f.longitude.errors" class="text-danger">
+          <div *ngIf="f.longitude.errors.required">Location is required</div>
+        </div>
+      </div>
+    </div>
+    <hr>
+
+    <label for="">Available Time</label>
+  <div class="row">
+    <div class="form-group col-6">
+      <label class="font-weight-bold">Opening Hr.</label>
+      <input type="number" formControlName="openingHr" min="0" max="23"
+             class="form-control text-darker font-weight-bold border-primary">
+      <div *ngIf="submitted && f.openingHr.errors" class="text-danger">
+        <div *ngIf="f.openingHr.errors.required">Opening Hour is required</div>
+      </div>
+    </div>
+    <div class="form-group col-6">
+      <label class="font-weight-bold">Opening Min</label>
+      <input type="number" min="0" max="59" formControlName="openingMin"
+             class="form-control text-darker font-weight-bold border-primary">
+      <div *ngIf="submitted && f.openingMin.errors" class="text-danger">
+        <div *ngIf="f.openingMin.errors.required">Opening Minute is required</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-6">
+      <label class="font-weight-bold">Closing Hr.</label>
+      <input type="number" min="0" max="23" formControlName="closingHr"
+             class="form-control text-darker font-weight-bold border-primary">
+      <div *ngIf="submitted && f.closingHr.errors" class="text-danger">
+        <div *ngIf="f.closingHr.errors.required">Closing Hour is required</div>
+      </div>
+    </div>
+    <div class="form-group col-6">
+      <label class="font-weight-bold">Closing Min</label>
+      <input type="number" min="0" max="59" formControlName="closingMin"
+             class="form-control text-darker font-weight-bold border-primary">
+      <div *ngIf="submitted && f.closingMin.errors" class="text-danger">
+        <div *ngIf="f.closingMin.errors.required">Closing Minute is required</div>
+      </div>
+    </div>
+  </div>
+
+
+    <hr class="my-4"/>
+    <button type="submit" class="btn btn-outline-primary">
+      Add
+    </button>
+    <button type="button" (click)="bsModalRef.hide()" class="btn ml-2 mr-2 btn-outline-warning">
+      Close
+    </button>
+  </form>
+</div>

@@ -17,7 +17,7 @@ export interface ItemRegisterModel {
   name: string;
   description: string;
   type: string;
-  price: number;
-  tags: string;
-  imgUrl: string[];
+  price: string;
+  tags: string[];
+  imgUrl: string;
 }

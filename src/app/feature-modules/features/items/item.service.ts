@@ -35,7 +35,7 @@ export class ItemService {
     const name = item.name;
     const type = item.type;
     const description = item.description;
-    const price = item.price;
+    const price = item.price.toString();
     const tags = [];
     const imgUrl = item.imgUrl;
     tags.push(item.tags);

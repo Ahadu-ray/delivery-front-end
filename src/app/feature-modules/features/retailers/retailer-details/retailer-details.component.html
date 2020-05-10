@@ -6,8 +6,10 @@
     <div class="author">
       <a>
         <span *ngIf="retailer.imgUrl">
-          <img class="avatar border-gray" src="{{retailer.imgUrl}}"
-               alt="retailer image">
+          <span *ngIf="!retailer.imgUrl.endsWith('noImg.png')">
+                <img src="{{retailer.imgUrl}}" class="avatar border-gray" alt="retailer image"></span>
+                <span *ngIf="retailer.imgUrl.endsWith('noImg.png')"><button class="btn btn-outline-success"
+                                                                        (click)="uploadImage(retailer._id)">Upload image</button></span>
 </span>
         <h5 class="title"><strong *ngIf="retailer.name">{{retailer.name}}:</strong>
           <span *ngIf="retailer.description"> {{retailer.description}}</span></h5>

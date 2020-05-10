@@ -13,11 +13,24 @@ export class FileUploadService {
   constructor(
     private httpClient: HttpClient,
   ) { }
+
   uploadImage(file: File, itemId: number): Observable<HttpEvent<Status>> {
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append('image', file);
     const url = `${environment.apiUrl}/items/upload/${itemId}`;
-    const httpRequest = new HttpRequest('POST',  url, formData, {
+
+    const httpRequest = new HttpRequest('PUT',  url, formData, {
+      reportProgress: true,
+      responseType: 'text'
+    });
+    return this.httpClient.request(httpRequest);
+  }
+  uploadRetailerImage(file: File, retailerId: number): Observable<HttpEvent<Status>> {
+    const formData = new FormData();
+    formData.append('image', file);
+    const url = `${environment.apiUrl}/retailers/upload/${retailerId}`;
+
+    const httpRequest = new HttpRequest('PUT',  url, formData, {
       reportProgress: true,
       responseType: 'text'
     });

@@ -4,6 +4,7 @@ import {NotificationService} from '../../../../shared/services/notification.serv
 import {Item} from '../item.model';
 import {BsModalService} from 'ngx-bootstrap/modal';
 import {UploadItemImageComponent} from '../upload-item-image/upload-item-image.component';
+import {environment} from '../../../../shared/api/config';
 
 @Component({
   selector: 'app-items-list',
@@ -12,7 +13,7 @@ import {UploadItemImageComponent} from '../upload-item-image/upload-item-image.c
 })
 export class ItemsListComponent implements OnInit {
   items: Item[];
-
+  fileUrl: string;
   constructor(
     private itemService: ItemService,
     private modalservice: BsModalService,
@@ -21,6 +22,7 @@ export class ItemsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.fileUrl = `${environment.fileUrl}`;
     this.listItems();
   }
 
@@ -31,7 +33,8 @@ export class ItemsListComponent implements OnInit {
         // change response when resp body is fixed
         if (result.status === 200) {
           // console.log(result);
-          this.items = result.body.filter(item => item.imgUrl = window.location.origin + '/' + item.imgUrl);
+          this.items = result.body.filter(item => item.imgUrl = `${environment.fileUrl}` + item.imgUrl);
+          console.log(this.items);
         } else {
           this.notificationService.error(`Couldn't list items`, result.statusText);
         }

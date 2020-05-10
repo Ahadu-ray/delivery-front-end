@@ -1,27 +1,28 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ItemService} from '../item.service';
+import {ItemService} from '../../items/item.service';
 import {NotificationService} from '../../../../shared/services/notification.service';
-import {HttpEventType, HttpResponse} from '@angular/common/http';
-import {BsModalRef} from 'ngx-bootstrap/modal';
 import {FileUploadService} from '../../../../shared/services/file-upload.service';
+import {BsModalRef} from 'ngx-bootstrap/modal';
+import {HttpEventType, HttpResponse} from '@angular/common/http';
+import {RetailerService} from '../retailer.service';
 
 @Component({
-  selector: 'app-upload-item-image',
-  templateUrl: './upload-item-image.component.html',
-  styleUrls: ['./upload-item-image.component.scss']
+  selector: 'app-upload-retailer-image',
+  templateUrl: './upload-retailer-image.component.html',
+  styleUrls: ['./upload-retailer-image.component.scss']
 })
-export class UploadItemImageComponent implements OnInit {
+export class UploadRetailerImageComponent implements OnInit {
+
   uploadImageForm: FormGroup;
   submitted = false;
-  itemId: number;
   selectedFiles: FileList;
   currentFileUpload: File;
   progress: { percentage: number } = {percentage: 0};
-
+  retialerId: number;
   constructor(
     private fb: FormBuilder,
-    private itemService: ItemService,
+    private itemService: RetailerService,
     private notificationService: NotificationService,
     private fileUploadService: FileUploadService,
     public bsModalRef: BsModalRef
@@ -47,21 +48,20 @@ export class UploadItemImageComponent implements OnInit {
     this.submitted = true;
     this.progress.percentage = 0;
     this.currentFileUpload = this.selectedFiles.item(0);
-    this.fileUploadService.uploadImage(this.currentFileUpload, this.itemId).subscribe(event => {
+    this.fileUploadService.uploadRetailerImage(this.currentFileUpload,this.retialerId).subscribe(event => {
       // change this when resp body is fixed
       if (event.type === HttpEventType.UploadProgress) {
         this.progress.percentage = Math.round(100 * event.loaded / event.total);
       } else if (event instanceof HttpResponse) {
         if (event.status === 200) {
-          this.notificationService.success('Uploaded item image', 'Successful');
+          this.notificationService.success('Uploaded retailer image', 'Successful');
           this.bsModalRef.hide();
         } else {
           this.bsModalRef.hide();
-          this.notificationService.error(`Couldn't upload image`, event.statusText);
+          this.notificationService.error(`Couldn't upload retailer image`, event.statusText);
         }
       }
     });
     this.selectedFiles = undefined;
   }
 }
-

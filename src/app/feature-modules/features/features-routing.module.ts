@@ -1,11 +1,8 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {WrapperComponent} from './wrapper/wrapper.component';
-import {DashboardComponent} from './dashboard/dashboard.component';
 import {OrdersComponent} from './orders/orders.component';
 import {CustomersComponent} from './customers/customers.component';
-import {CuisinesComponent} from './cuisines/cuisines.component';
-import {RestaurantsComponent} from './restaurants/restaurants.component';
 import {ItemsListComponent} from './items/items-list/items-list.component';
 import {RetailersComponent} from './retailers/retailers.component';
 import {RetailerItemsComponent} from './retailers/retailer-items/retailer-items.component';
@@ -17,10 +14,10 @@ const routes: Routes = [
     path: '',
     component: WrapperComponent,
     children: [
-      {
-        path: 'dashboard',
-        component: DashboardComponent
-      },
+      // {
+      //   path: 'dashboard',
+      //   component: DashboardComponent
+      // },
       {
         path: 'orders',
         component: OrdersComponent
@@ -46,7 +43,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: 'orders',
         pathMatch: 'full'
       }
     ]
