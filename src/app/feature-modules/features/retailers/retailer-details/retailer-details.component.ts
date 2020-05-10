@@ -17,7 +17,7 @@ retailer: RetailerModel;
   ngOnInit(): void {
     // use this on prod
     // this.retailer.imgUrl = window.location.origin + '/' + this.retailer.imgUrl;
-this.retailer.imgUrl = `${environment.apiUrl}/${this.retailer.imgUrl} `;
+this.retailer.imgUrl = `${environment.fileUrl}/${this.retailer.imgUrl} `;
   }
 
 }
