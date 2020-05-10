@@ -11,14 +11,23 @@ import { CustomersComponent } from './customers/customers.component';
 import { CuisinesComponent } from './cuisines/cuisines.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { OrderDetailsComponent } from './orders/order-details/order-details.component';
+import {SharedModule} from '../../shared/shared.module';
+import {ItemsListComponent} from './items/items-list/items-list.component';
+import { RetailersComponent } from './retailers/retailers.component';
+import { AddItemsComponent } from './retailers/add-items/add-items.component';
+import { RetailerDetailsComponent } from './retailers/retailer-details/retailer-details.component';
+import { RetailerItemsComponent } from './retailers/retailer-items/retailer-items.component';
+import { RetailerOrdersComponent } from './retailers/retailer-orders/retailer-orders.component';
+import { UploadItemImageComponent } from './items/upload-item-image/upload-item-image.component';
 
 
 @NgModule({
-  declarations: [WrapperComponent, SidebarComponent, NavbarComponent, DashboardComponent, OrdersComponent, CustomersComponent, CuisinesComponent, RestaurantsComponent, OrderDetailsComponent],
+  declarations: [WrapperComponent, SidebarComponent, NavbarComponent, DashboardComponent, OrdersComponent, CustomersComponent, CuisinesComponent, RestaurantsComponent, OrderDetailsComponent, ItemsListComponent, RetailersComponent, AddItemsComponent, RetailerDetailsComponent, RetailerItemsComponent, RetailerOrdersComponent, UploadItemImageComponent],
   imports: [
     CommonModule,
-    FeaturesRoutingModule
+    FeaturesRoutingModule,
+    SharedModule
   ],
-  entryComponents: [OrderDetailsComponent]
+  entryComponents: [OrderDetailsComponent, RetailerDetailsComponent, AddItemsComponent, UploadItemImageComponent]
 })
 export class FeaturesModule { }
