@@ -1,0 +1,38 @@
+<div class="card card-user">
+  <br>
+  <br>
+  <br>
+  <div class="card-body mt-4" *ngIf="retailer">
+    <div class="author">
+      <a>
+        <span *ngIf="retailer.imgUrl">
+          <img class="avatar border-gray" src="{{retailer.imgUrl}}"
+               alt="retailer image">
+</span>
+        <h5 class="title"><strong *ngIf="retailer.name">{{retailer.name}}:</strong>
+          <span *ngIf="retailer.description"> {{retailer.description}}</span></h5>
+      </a>
+    </div>
+    <hr>
+    <div class="button-container">
+      <div class="row">
+
+        <div class="ml-5 col-lg-9 col-md-9 col-9 mr-auto">
+          <h5>Opening Hours <span *ngIf="retailer.openingHours">{{retailer.openingHours[0]}}</span>
+          </h5>
+
+          <h5>Closing Hours <span *ngIf="retailer.openingHours">{{retailer.closingHours[0]}}</span>
+          </h5>
+          <h5>
+            Manager: <span *ngIf="retailer.manager"><span
+            *ngIf="retailer.manager.username">{{retailer.manager.username}}</span></span>
+          </h5>
+        </div>
+        <div class="col-lg-3 mr-auto">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

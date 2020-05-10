@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title"> Retailer Orders</h4>
+        <h5 class="card-title"> Retailer ID: <span *ngIf="retailerId">{{retailerId}}</span></h5>
+      </div>
+      <div class="card-body">
+        <div *ngIf="orders">
+          <div class="alert alert-info" *ngIf="orders.length === 0">Empty Orders lists</div>
+          <table class="table" *ngIf="orders.length > 0">
+            <thead class=" text-primary">
+            <th>
+              #
+            </th>
+            <th>
+              Customer
+            </th>
+            <th>
+              Phone
+
+            </th>
+
+            <th>
+              Items
+            </th>
+            <th>Price</th>
+            <th>Delivery Location</th>
+            <th class="text-right">
+              Actions
+            </th>
+            </thead>
+            <tbody>
+            <tr *ngFor="let each of orders">
+              <td><span *ngIf="each.customer"><span
+                *ngIf="each.customer.username">{{each.customer.username}}</span></span></td>
+              <td><span *ngIf="each.customer"><span
+                *ngIf="each.customer.phoneNumber">{{each.customer.phoneNumber}}</span></span></td>
+              <td><span *ngIf="each.items">
+              <button class="btn btn-outline-primary" placement="right" popoverClass="custom-pop-over"
+                      [ngbPopover]="popContent"
+                      triggers="mouseenter:mouseleave"
+                      [popoverTitle]="popTitle"><i class="fa fa-file-alt"></i></button>
+                  <ng-template #popTitle>
+                    <p>
+        <span *ngFor="let item of each.items"><span
+          *ngIf="item.item">{{item.item}}</span> x <span *ngIf="item.quantity">{{item.quantity}} </span>
+        </span></p>
+                  </ng-template>
+                  <ng-template #popContent>
+                    <h3>Items</h3>
+                  </ng-template>
+            </span></td>
+              <td><span *ngIf="each.totalPrice">{{each.totalPrice}}</span></td>
+              <td><span class="btn-link" *ngIf="each.deliveryLocation"> <span
+                *ngIf="each.deliveryLocation.coordinates">
+              <span *ngIf="each.deliveryLocation.coordinates.length > 0"><span
+                *ngIf="each.deliveryLocation.coordinates[0]">{{each.deliveryLocation.coordinates[0]}}</span><span
+                *ngIf="each.deliveryLocation.coordinates[1]">
+                , {{each.deliveryLocation.coordinates[1]}}
+              </span>
+            </span> </span></span></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

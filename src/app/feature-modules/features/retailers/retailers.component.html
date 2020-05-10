@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title"> Registered Retailers</h4>
+      </div>
+      <div class="card-body">
+        <div *ngIf="retailers">
+          <div *ngIf="retailers.length == 0" class="alert alert-info">Empty Retailers List</div>
+          <div *ngIf="retailers.length > 0">
+            <table class="table">
+              <thead class=" text-primary">
+              <th>
+                #
+              </th>
+              <th>
+                Name
+              </th>
+              <th>
+                Phone
+              </th>
+
+              <th>
+                Type
+              </th>
+              <th>
+                Location
+              </th>
+
+              <th class="text-right">
+                Actions
+              </th>
+              </thead>
+              <tbody>
+              <tr *ngFor="let each of retailers; let i=index;">
+                <td>
+                  {{i + 1}}
+                </td>
+                <td>
+                  <span *ngIf="each.name">{{each.name}}</span>
+                </td>
+                <td>
+                  <span *ngIf="each.phoneNumber">{{each.phoneNumber}}</span>
+                </td>
+                <td>
+                  <span *ngIf="each.type">{{each.type}}</span>
+                </td>
+                <td>  <span *ngIf="each.location">
+        <span
+          *ngIf="each.location.coordinates && each.location.coordinates.length > 0">
+          <span *ngIf="each.location.coordinates[0]">&nbsp;&nbsp;{{each.location.coordinates[0]}}</span>
+          <span *ngIf="each.location.coordinates[1]">, {{each.location.coordinates[1]}}</span>
+        </span>
+        </span></td>
+                <td class="text-right">
+                  <button class="btn btn-sm btn-primary" (click)="detail(each)">More</button>
+                  <button class="btn btn-sm btn-primary" (click)="retailerItems(each._id)">Items</button>
+                  <button class="btn btn-sm btn-primary" (click)="retailerOrders(each._id)">Orders</button>
+                  <button class="btn btn-sm btn-primary">Delete</button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
