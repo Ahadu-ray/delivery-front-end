@@ -19,7 +19,7 @@ export class UploadRetailerImageComponent implements OnInit {
   selectedFiles: FileList;
   currentFileUpload: File;
   progress: { percentage: number } = {percentage: 0};
-  retialerId: number;
+  retailerId: number;
   constructor(
     private fb: FormBuilder,
     private itemService: RetailerService,
@@ -48,7 +48,7 @@ export class UploadRetailerImageComponent implements OnInit {
     this.submitted = true;
     this.progress.percentage = 0;
     this.currentFileUpload = this.selectedFiles.item(0);
-    this.fileUploadService.uploadRetailerImage(this.currentFileUpload,this.retialerId).subscribe(event => {
+    this.fileUploadService.uploadRetailerImage(this.currentFileUpload,this.retailerId).subscribe(event => {
       // change this when resp body is fixed
       if (event.type === HttpEventType.UploadProgress) {
         this.progress.percentage = Math.round(100 * event.loaded / event.total);

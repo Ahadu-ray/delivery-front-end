@@ -26,8 +26,8 @@ export class RetailerService {
     const headers = new HttpHeaders();
     headers.set('Content-Type', 'text/plain');
     const coordinates = [];
-    coordinates.push(retailer.latitude);
     coordinates.push(retailer.longitude);
+    coordinates.push(retailer.latitude);
     const tagsValue = [];
     tagsValue.push(retailer.tags);
 
@@ -40,10 +40,11 @@ export class RetailerService {
     closingHrVal.push(retailer.closingMin);
 
     const name = retailer.name;
-    const location = {
-      coordinates,
-      type: retailer.locationType
-    };
+    // const location = {
+    //   coordinates,
+    //   type: retailer.locationType
+    // };
+    const location = coordinates;
     const description = retailer.description;
     const phoneNumber = retailer.phoneNumber;
     const type = retailer.type;

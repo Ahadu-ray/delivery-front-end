@@ -24,9 +24,9 @@
             <!--</thead>-->
             <tbody>
             <tr *ngFor="let each of items" class="border-bottom">
-              <td><span *ngIf="!each.imgUrl.endsWith('noImg.png')">
+              <td><span *ngIf="!each.imgUrl.includes('noImg.png')">
                 <img src="{{each.imgUrl}}" alt="item image" width="50" height="50"></span>
-                <span *ngIf="each.imgUrl.endsWith('noImg.png')"><button class="btn btn-outline-success"
+                <span *ngIf="each.imgUrl.includes('noImg.png')"><button class="btn btn-outline-success"
                                                                         (click)="uploadImage(each._id)">Upload image</button></span>
               </td>
               <td>

@@ -22,9 +22,12 @@ export class RetailerDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.retailer.imgUrl);
     // use this on prod
     // this.retailer.imgUrl = window.location.origin + '/' + this.retailer.imgUrl;
     this.retailer.imgUrl = `${environment.fileUrl}/${this.retailer.imgUrl} `;
+    console.log(this.retailer.imgUrl);
+
   }
 
   uploadImage(_id: number) {

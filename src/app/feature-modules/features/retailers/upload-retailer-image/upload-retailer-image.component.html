@@ -11,8 +11,8 @@
         <label class="font-weight-bold">Item Image</label>
         <input type="file" formControlName="image" class="form-control"   type="file" (change)="selectFile($event)"
                id="inputGroupFile01">
-        <div *ngIf="submitted && f.file.errors" class="text-danger">
-          <div *ngIf="f.file.errors.required">Item Image is required</div>
+        <div *ngIf="submitted && f.image.errors" class="text-danger">
+          <div *ngIf="f.image.errors.required">Item Image is required</div>
         </div>
       </div>
 
